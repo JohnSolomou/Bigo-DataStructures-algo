@@ -151,3 +151,116 @@
 //   return hiArray;
 // }
 // arrayOfHiNTimes(6); //O(n)
+
+//Exercise twitter
+// const array = [
+//   { tweet: "hi", date: 2012 },
+//   { tweet: "bye", date: 2014 },
+//   { tweet: "john", date: 2018 },
+// ]; // O(n^2)
+
+// array[0]; // O(1)
+// array[array.length - 1]; //O(1)
+
+// "aksdlkjfasldkjfaskld".length; // the .length is property of an object O(1)
+
+// const nemo = ["nemo"];
+// const everyone = [
+//   { name: "dory" },
+//   { name: "bruce" },
+//   { name: "marlin" },
+//   { name: "nemo" },
+//   { name: "gill" },
+//   { name: "bloat" },
+//   { name: "nigel" },
+//   { name: "squirt" },
+//   { name: "darla" },
+//   { name: "hank" },
+// ];
+
+// try {
+//   everyone.forEach((fish) => {
+//     console.log("running");
+//     if (fish.name == "nemo") console.log(fish.name);
+//   });
+// } catch (e) {
+//   if (e !== "break") throw e;
+// }did not break so will run full array after finding nemo
+
+// const findNemo2 = (array) => {
+//   array.forEach((fish) => {
+//     console.log("running");
+//     if (fish === "nemo") {
+//       console.log("Found nemo");
+//       return;
+//     }
+//   });
+// };
+
+// findNemo2(everyone);
+// given 2 arrays , create a function that let's a user know (true/false) weather these two arrays contain any common items
+//for example :
+//const array1 = ["a","b","c","x"];
+//const array2 = ["z","y","i"]
+//should return flase
+//const array1 = ["a","b","c","x"];
+//const array2 = ["z","y","x"];
+//should return true.
+// brute force strategy
+// const array1 = ["a", "b", "c", "x"];
+// const array2 = ["z", "y", "x"];
+
+// function containsComminItem(arr1, arr2) {
+//   for (let i = 0; i < arr1.length; i++) {
+//     for (let j = 0; j < arr2.length; j++) {
+//       console.log(arr1[i], arr2[j]);
+//       if (arr1[i] === arr2[j]) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+// containsComminItem(array1, array2);
+// console.log(containsComminItem(array1, array2)); // O(a*b)not the best solution
+
+const array1 = ["a", "b", "c", "x"];
+const array2 = ["z", "y", 1];
+//steps to solve array1 to be converted to and object
+//array1 ==> obj{
+//a: true,
+//b: true,
+//c: true ,
+//x: true
+//}
+//array2[index] === obj.properties
+
+function containscommonItem2(arr1, arr2) {
+  //loop through first array and create object where properties === items in the array
+  // can we assume there are 2 params
+  let map = {};
+  for (let i = 0; i < arr1.length; i++) {
+    if (!map[arr1[i]]) {
+      const item = arr1[i];
+      map[item] = true;
+    }
+  }
+  // console.log(map);
+  // loop through second array and check if item is second array exists on created object
+  for (let j = 0; j < arr2.length; j++) {
+    if (map[arr2[j]]) {
+      return true;
+    }
+  }
+  return false;
+} // this becomes O(a + b)
+// containscommonItem2(array1, array2);
+// console.log(containscommonItem2(array1, array2));
+
+//more readable javascript using specific methods
+
+function containsComminItem3(arr1, arr2) {
+  return arr1.some((item) => arr2.includes(item));
+}
+containsComminItem3(array1, array2);
+console.log(containsComminItem3(array1, array2));
