@@ -269,10 +269,125 @@ console.log(containsComminItem3(array1, array2));
 
 var strings = ["a", "b", "c", "d"];
 
+// accessing array
+strings[2]; //O(1) accesses the index of 2 in array the letter c
 //push
-strings.push("e");
+strings.push("e"); //O(1) insert
 
 //pop
-strings.pop();
+strings.pop(); // takes on item off the end of array
 
-strings.unshift();
+strings.unshift("x"); //O(n) adds to beginning of array
+
+strings.splice(2, 0, "alien"); // O(n)will add at alien to the second index and remove nothing
+
+// two types of arrays static and dynamic. static array is limited you have to specify the number of items. dynamic array allows you to copy the array and add to it.
+
+//advanced javascript
+//reference type
+// var object1 = {value: 10}//put in an address
+// var object2 = object1; // reference the address where object1 is stored in
+// var object3 = {value:10}// is stored in a different new address
+//context vs scope
+// function a(){
+//   let b=4; //scope is only inside function
+// }
+// const object4 ={
+//   a: function(){
+//     console.log(this)
+//   }
+// }
+
+//instantiation makes a copy of an object
+// class player{
+//    constructor(name,type){
+//      this.name = name;
+//      this.type = type;
+//    }
+//    introduce(){
+//      console.log(`hi i am ${this.name},I'm a ${this.type}`)
+//    }
+// }
+// class Wizard extends Player{
+//   console.log(this)
+//   constructor(name,type){
+//     super(name,type)
+//   }
+//   play(){
+//     console.log(`weeee I'm a ${this.type}`)
+//   }
+// }
+// const wizard1 = new Wizard('John','Healer')
+// const wizard = new Wizard('James','Creator')
+
+//build an array from scratch
+// class MyArray {
+//   constructor() {
+//     this.length = 0;
+//     this.data = {};
+//   }
+//   get(index) {
+//     return this.data;
+//   }
+//   push(item) {
+//     this.data[this.length] = item;
+//     this.length++;
+//     return this.length;
+//   }
+//   pop() {
+//     const lastItem = this.data[this.length - 1];
+//     delete this.data[this.length - 1];
+//     this.length--;
+//     return lastItem;
+//   }
+//   delete(index) {
+//     const item = this.data[index];
+//     this.shiftItems(index);
+//   }
+//   shiftItems(index) {
+//     for (let i = index; i < this.length - 1; i++) {
+//       this.data[i] = this.data[i + 1];
+//     }
+//     delete this.data[this.length - 1];
+//     this.length--;
+//   }
+// }
+// const newArray = new MyArray();
+// newArray.push("hello");
+// newArray.push("world");
+// newArray.push("you");
+// newArray.delete(1);
+// newArray.pop(); // will not show last item
+// console.log(newArray);
+// strings and array
+// string question reverse a string
+//Create a function that reverses a string :
+//"hi my name is john "
+//nhoj si eman ym ih
+var Niko = "Hi there Niko.";
+Niko.split().reverse().join();
+function reverse(str) {
+  //check input
+  if (!str || str.length < 2 || typeof str !== "string") {
+    return "not a string";
+  }
+  const backwards = [];
+  const totalItems = str.length - 1;
+  for (i = totalItems; i >= 0; i--) {
+    backwards.push(str[i]);
+  }
+  return backwards.join("");
+  //
+}
+reverse(Niko);
+console.log(reverse(Niko));
+// reverse a string using javascript built in methods
+function reverse2(str) {
+  return str.split("").reverse().join("");
+}
+reverse2(Niko);
+console.log(reverse2(Niko));
+// one line function using es6
+const reverse3 = (str) => str.split("").reverse().join("");
+reverse3(Niko);
+console.log(reverse3(Niko));
