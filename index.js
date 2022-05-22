@@ -264,3 +264,15 @@ function containsComminItem3(arr1, arr2) {
 }
 containsComminItem3(array1, array2);
 console.log(containsComminItem3(array1, array2));
+//DATA STRUCTURES
+//arrays
+
+var strings = ["a", "b", "c", "d"];
+
+//push
+strings.push("e");
+
+//pop
+strings.pop();
+
+strings.unshift();
