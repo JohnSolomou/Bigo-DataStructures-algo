@@ -391,3 +391,50 @@ console.log(reverse2(Niko));
 const reverse3 = (str) => str.split("").reverse().join("");
 reverse3(Niko);
 console.log(reverse3(Niko));
+//merge sorted array
+function mergeSortedArrays(array1, array2) {
+  // const mergedArray = [];
+  // let array1Item = array1[0];
+  // let array2Item = array2[0];
+  // i = 1;
+  // j = 1;
+  // //check input
+  // if (array1.length === 0) {
+  //   return array2;
+  // }
+  // if (array2.length === 0) {
+  //   return array1;
+  // }
+
+  // while (array1Item || array2Item) {
+  //   console.log(array1Item, array2Item);
+  //   if (!array2Item || array1Item < array2Item) {
+  //     mergedArray.push(array1Item);
+  //     array1Item = array1[i];
+  //     i++;
+  //   } else {
+  //     mergedArray.push(array2Item);
+  //     array2Item = array2[j];
+  //     j++;
+  //   }
+  // }
+
+  // return mergedArray;
+  let result = [...array1, ...array2];
+  return result.sort((a, b) => a - b);
+}
+
+// mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+console.log(mergeSortedArrays([0, 3, 4, 31, 44, 45, 55], [4, 6, 30, 31, 33]));
+
+const arr1 = [3, 5, 6, 10, 11, 20];
+const arr2 = [1, 2, 7, 8, 15, 19];
+
+function mergeTwo(arr1, arr2) {
+  let result = [...arr1, ...arr2];
+  return result.sort((a, b) => a - b);
+}
+
+console.log(mergeTwo(arr1, arr2));
+
+//two sum
