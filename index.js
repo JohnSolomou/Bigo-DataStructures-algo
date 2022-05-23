@@ -438,3 +438,111 @@ function mergeTwo(arr1, arr2) {
 console.log(mergeTwo(arr1, arr2));
 
 //two sum
+
+//hash tables objects key value pairs
+
+let superhuman = {
+  age: 42,
+  name: "John",
+  ability1: "fly",
+  ability2: "laser eyes",
+  frustrated: function () {
+    console.log("ahhhh!");
+  },
+};
+superhuman.age; //O(1)
+superhuman.ability3 = "super strength";
+superhuman.frustrated();
+console.log(superhuman);
+//when there is a collision of information in the same memory address this makes the hash table O(n/k) or O(n)
+//Map() this function allows us to store strings numbers and even functions as key where objects only allow strings as key.
+// const a = new Map(); // saves keys and values with any data type
+// const b = new Set(); //only sets keys no values
+
+//creating hashtable
+// class HashTable {
+//   constructor(size) {
+//     this.data = new Array(size);
+//   }
+//   _hash(key) {
+//     let hash = 0;
+//     for (let i = 0; i < key.length; i++) {
+//       hash = (hash + key.charCodeAt(i) * i) % this.data.length;
+//     }
+//     return hash;
+//   }
+//   set(key, value) {
+//     let address = this._hash(key);
+//     if (!this.data[address]) {
+//       this.data[address] = [];
+//     }
+//     this.data[address].push([key, value]);
+//     return this.data;
+//   } // O(1)
+//   get(key) {
+//     let address = this._hash(key);
+//     const currentBucket = this.data[address];
+//     if (currentBucket) {
+//       for (i = 0; i > currentBucket.length; i++) {
+//         if (currentBucket[i][0] === key) {
+//           return currentBucket[i][1];
+//         }
+//       }
+//     }
+//     return undefined;
+//   }
+//   keys() {
+//     const keysArray = [];
+//     for (let i = 0; i < this.data.length; i++) {
+//       if (this.data[i]) {
+//         keysArray.push(this.data[i][0][0]);
+//       }
+//     }
+//     return keysArray;
+//   }
+// }
+// const myHashTable = new HashTable(50);
+// myHashTable.set("grapes", 10000);
+// myHashTable.set("apples", 55);
+// myHashTable.set("oranges", 2);
+// myHashTable.get("grapes");
+
+//google question
+//given an array = [2,5,1,2,3,5,1,2,4]
+//first recurring number
+//it should return 2
+
+//given an array = [2,1,1,2,3,5,1,2,4]
+//it should return 1
+
+//given an array = [2,3,4,5]
+//it should return undefined
+
+// function firstRecurringCharacter(input) {
+//   for (let i = 0; i < input.length; i++) {
+//     for (let j = i + 1; j < input.length; j++) {
+//       if (input[i] === input[j]) {
+//         return input[i];
+//       }
+//     }
+//   }
+//   return undefined;
+// }O(n^2)
+// console.log(firstRecurringCharacter([0, 9, 7, 6, 3, 5, 1, 2, 4]));
+//using hashtable or object
+
+function firstRecurringCharacter2(input) {
+  //loop through all items in array and add them to hashtable. while doing that we can check if property already exists.
+  let map = {};
+  for (let i = 0; i < input.length; i++) {
+    if (map[input[i]] !== undefined) {
+      return input[i];
+    } else {
+      map[input[i]] = i;
+    }
+    console.log(map);
+  }
+  // console.log(map);
+  return undefined;
+} //O(n)
+console.log(firstRecurringCharacter2([2, 5, 1, 2, 3, 5, 1, 2, 4]));
